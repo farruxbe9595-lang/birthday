@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Tabrik</title>
+
+<style>
+body {
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:linear-gradient(135deg,#ff416c,#ff4b2b);
+  color:white;
+  font-family:sans-serif;
+  overflow:hidden;
+}
+
+h1 {
+  font-size:40px;
+  text-align:center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  100% {transform: scale(1.1);}
+}
+
+button {
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:#ff416c;
+  margin-top:20px;
+  cursor:pointer;
+}
+
+.confetti {
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:yellow;
+  top:-10px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {transform: translateY(100vh);}
+}
+</style>
+
+</head>
+<body>
+
+<h1>🎉 Tug‘ilgan kuningiz bilan<br>Nodirbek!<br>33 yosh muborak! 🎂</h1>
+
+<button onclick="showConfetti()">🎁 Surprise</button>
+
+<script>
+function showConfetti() {
+  for (let i = 0; i < 100; i++) {
+    let div = document.createElement("div");
+    div.className = "confetti";
+    div.style.left = Math.random()*100+"vw";
+    div.style.animationDuration = (Math.random()*3+2)+"s";
+    div.style.background = ["red","yellow","blue","green"][Math.floor(Math.random()*4)];
+    document.body.appendChild(div);
+  }
+}
+</script>
+
+</body>
+</html>
