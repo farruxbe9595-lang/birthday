@@ -1,78 +1,430 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<title>Tabrik</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temir Yo‘l Tabrigi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-body {
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-  color:white;
-  font-family:sans-serif;
-  overflow:hidden;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(rgba(5, 20, 40, 0.55), rgba(10, 25, 50, 0.7)),
+        url("https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1600&q=80")
+        center center / cover no-repeat fixed;
+      min-height: 100vh;
+      position: relative;
+    }
 
-h1 {
-  font-size:40px;
-  text-align:center;
-  animation: pulse 1.5s infinite;
-}
+    .overlay-lights {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(255,215,0,0.08), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(0,191,255,0.08), transparent 25%);
+      pointer-events: none;
+    }
 
-@keyframes pulse {
-  0% {transform: scale(1);}
-  100% {transform: scale(1.1);}
-}
+    .main {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
 
-button {
-  padding:15px 30px;
-  font-size:18px;
-  border:none;
-  border-radius:10px;
-  background:white;
-  color:#ff416c;
-  margin-top:20px;
-  cursor:pointer;
-}
+    .card {
+      width: min(920px, 95%);
+      padding: 40px 24px;
+      border-radius: 28px;
+      background: rgba(7, 21, 43, 0.55);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: cardIn 1.3s ease;
+    }
 
-.confetti {
-  position:fixed;
-  width:10px;
-  height:10px;
-  background:yellow;
-  top:-10px;
-  animation: fall linear infinite;
-}
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-@keyframes fall {
-  to {transform: translateY(100vh);}
-}
-</style>
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #d4af37, #ffdd77);
+      color: #18263d;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+    }
 
+    .emoji-train {
+      font-size: 46px;
+      animation: trainMove 2.4s ease-in-out infinite alternate;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    @keyframes trainMove {
+      from { transform: translateX(-8px); }
+      to { transform: translateX(8px); }
+    }
+
+    h1 {
+      margin: 10px 0 12px;
+      font-size: clamp(32px, 6vw, 64px);
+      line-height: 1.1;
+      font-weight: 800;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    }
+
+    .name {
+      color: #ffd86b;
+      text-shadow: 0 0 15px rgba(255, 216, 107, 0.35);
+    }
+
+    .subtitle {
+      margin: 0 auto 14px;
+      max-width: 780px;
+      font-size: clamp(18px, 2.6vw, 28px);
+      line-height: 1.5;
+      color: #eaf3ff;
+    }
+
+    .age {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 22px;
+      border-radius: 18px;
+      background: rgba(255, 215, 0, 0.14);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 800;
+      color: #ffe082;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.12);
+    }
+
+    .rail-line {
+      width: 220px;
+      height: 8px;
+      margin: 24px auto 30px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #8b6f3d, #c2a86b, #8b6f3d);
+      position: relative;
+    }
+
+    .rail-line::before,
+    .rail-line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.75);
+    }
+
+    .rail-line::before {
+      top: -10px;
+    }
+
+    .rail-line::after {
+      top: 16px;
+    }
+
+    .gift-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 34px;
+      border: none;
+      border-radius: 18px;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #102038;
+      background: linear-gradient(135deg, #ffd54f, #ffb300);
+      box-shadow: 0 16px 30px rgba(255, 179, 0, 0.35);
+      transition: 0.25s ease;
+    }
+
+    .gift-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 22px 40px rgba(255, 179, 0, 0.45);
+    }
+
+    .gift-btn:active {
+      transform: scale(0.98);
+    }
+
+    .gift-text {
+      font-size: 20px;
+    }
+
+    .message-box {
+      margin-top: 26px;
+      min-height: 72px;
+      font-size: clamp(18px, 2.3vw, 28px);
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    }
+
+    .flash {
+      animation: flashText 0.8s ease 3;
+    }
+
+    @keyframes flashText {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.08); }
+    }
+
+    .confetti, .spark {
+      position: fixed;
+      top: -20px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .confetti {
+      width: 12px;
+      height: 18px;
+      opacity: 0.95;
+      animation: fall linear forwards;
+    }
+
+    .spark {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: sparkFall linear forwards;
+      box-shadow: 0 0 12px currentColor;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes sparkFall {
+      to {
+        transform: translateY(105vh) scale(0.4);
+        opacity: 0;
+      }
+    }
+
+    .wow-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at center, rgba(255, 215, 0, 0.18), rgba(5, 10, 30, 0.9)),
+        rgba(0,0,0,0.7);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .wow-content {
+      max-width: 900px;
+      animation: zoomIn 0.7s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.75);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .wow-title {
+      font-size: clamp(36px, 8vw, 88px);
+      margin: 0 0 16px;
+      font-weight: 900;
+      color: #ffd54f;
+      text-shadow: 0 0 25px rgba(255, 213, 79, 0.45);
+    }
+
+    .wow-subtitle {
+      font-size: clamp(20px, 3vw, 36px);
+      line-height: 1.5;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    .close-btn {
+      margin-top: 28px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      background: white;
+      color: #102038;
+      cursor: pointer;
+    }
+
+    .bottom-note {
+      margin-top: 30px;
+      font-size: 15px;
+      color: #d8e7ff;
+      opacity: 0.88;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 30px 18px;
+      }
+
+      .gift-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="overlay-lights"></div>
 
-<h1>🎉 Tug‘ilgan kuningiz bilan<br>Nodirbek!<br>33 yosh muborak! 🎂</h1>
+  <div class="main">
+    <div class="card">
+      <div class="badge">O‘ZBEKISTON TEMIR YO‘L MUHITI</div>
+      <div class="emoji-train">🚆</div>
 
-<button onclick="showConfetti()">🎁 Surprise</button>
+      <h1>
+        Tug‘ilgan kuningiz bilan<br>
+        <span class="name">Nodirbek!</span>
+      </h1>
 
-<script>
-function showConfetti() {
-  for (let i = 0; i < 100; i++) {
-    let div = document.createElement("div");
-    div.className = "confetti";
-    div.style.left = Math.random()*100+"vw";
-    div.style.animationDuration = (Math.random()*3+2)+"s";
-    div.style.background = ["red","yellow","blue","green"][Math.floor(Math.random()*4)];
-    document.body.appendChild(div);
-  }
-}
-</script>
+      <div class="subtitle">
+        Sizga mustahkam sog‘lik, oilaviy xotirjamlik, sharafli mehnat va
+        temir yo‘l sohasida yanada ulkan muvaffaqiyatlar tilaymiz.
+      </div>
 
+      <div class="age">33 yosh muborak! 🎉</div>
+
+      <div class="rail-line"></div>
+
+      <button class="gift-btn" onclick="showSurprise()">
+        <span>🎁</span>
+        <span class="gift-text">Sovg‘ani ochish</span>
+      </button>
+
+      <div class="message-box" id="messageBox"></div>
+
+      <div class="bottom-note">
+        Hurmat va ezgu tilaklar bilan — jamoa nomidan
+      </div>
+    </div>
+  </div>
+
+  <div class="wow-screen" id="wowScreen">
+    <div class="wow-content">
+      <h2 class="wow-title">🎆 SURPRIZE! 🎆</h2>
+      <p class="wow-subtitle">
+        Hurmatli <b>Nodirbek</b>, tavallud ayyomingiz bilan samimiy tabriklaymiz!<br><br>
+        Temir yo‘ldek mustahkam iroda, yuqori mas’uliyat, sharafli mehnat va
+        hayotingiz yo‘lida doimo omad hamroh bo‘lsin.<br><br>
+        <b>33 yosh muborak bo‘lsin!</b> 🚂🎂
+      </p>
+      <button class="close-btn" onclick="closeSurprise()">Yopish</button>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "🚆 Bugun jamoamiz uchun alohida bayram!",
+      "🎉 Nodirbek, sizga baxt va omad tilaymiz!",
+      "🛤 Temir yo‘ldek yo‘lingiz doimo ravon bo‘lsin!",
+      "🏆 Mehnatingiz qadrlanaversin va yutuqlaringiz ko‘paysin!",
+      "🎂 33 yosh — yangi zafarlar davri bo‘lsin!"
+    ];
+
+    let msgIndex = 0;
+    const messageBox = document.getElementById("messageBox");
+
+    function rotateMessages() {
+      messageBox.classList.remove("flash");
+      void messageBox.offsetWidth;
+      messageBox.textContent = messages[msgIndex];
+      messageBox.classList.add("flash");
+      msgIndex = (msgIndex + 1) % messages.length;
+    }
+
+    rotateMessages();
+    setInterval(rotateMessages, 2200);
+
+    function makeConfetti(count = 140) {
+      const colors = ["#ffd54f", "#ff5252", "#40c4ff", "#69f0ae", "#ffffff", "#ff80ab"];
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
+        el.style.animationDuration = (Math.random() * 2 + 2.5) + "s";
+        el.style.transform = `rotate(${Math.random() * 360}deg)`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 5200);
+      }
+    }
+
+    function makeSparks(count = 90) {
+      const colors = ["#ffd54f", "#fff176", "#40c4ff", "#ffffff"];
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("div");
+        el.className = "spark";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.color = colors[Math.floor(Math.random() * colors.length)];
+        el.style.background = "currentColor";
+        el.style.animationDuration = (Math.random() * 2 + 1.6) + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 4200);
+      }
+    }
+
+    function showSurprise() {
+      makeConfetti(180);
+      makeSparks(120);
+      document.getElementById("wowScreen").style.display = "flex";
+    }
+
+    function closeSurprise() {
+      document.getElementById("wowScreen").style.display = "none";
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        makeConfetti(60);
+      }, 700);
+    };
+  </script>
 </body>
 </html>
