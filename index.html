@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Temir Yo‘l Tabrigi</title>
+  <title>VCHD-5 TEX OTDEL Tabrigi</title>
+
   <style>
     * {
       box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #ffd86b;
+      --deep: #07152b;
+      --blue: #102038;
+      --white: #ffffff;
     }
 
     body {
@@ -15,7 +23,7 @@
       overflow: hidden;
       color: white;
       background:
-        linear-gradient(rgba(5, 20, 40, 0.55), rgba(10, 25, 50, 0.7)),
+        linear-gradient(rgba(5, 20, 40, 0.55), rgba(10, 25, 50, 0.72)),
         url("https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1600&q=80")
         center center / cover no-repeat fixed;
       min-height: 100vh;
@@ -27,8 +35,8 @@
       inset: 0;
       background:
         radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 25%),
-        radial-gradient(circle at 80% 30%, rgba(255,215,0,0.08), transparent 20%),
-        radial-gradient(circle at 50% 80%, rgba(0,191,255,0.08), transparent 25%);
+        radial-gradient(circle at 80% 30%, rgba(255,215,0,0.10), transparent 22%),
+        radial-gradient(circle at 50% 80%, rgba(0,191,255,0.10), transparent 26%);
       pointer-events: none;
     }
 
@@ -39,19 +47,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 18px;
       text-align: center;
     }
 
     .card {
-      width: min(920px, 95%);
-      padding: 40px 24px;
+      width: min(920px, 96vw);
+      max-height: 96vh;
+      overflow-y: auto;
+      padding: clamp(24px, 5vw, 42px) clamp(16px, 4vw, 28px);
       border-radius: 28px;
-      background: rgba(7, 21, 43, 0.55);
-      backdrop-filter: blur(10px);
+      background: rgba(7, 21, 43, 0.58);
+      backdrop-filter: blur(11px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      animation: cardIn 1.3s ease;
+      animation: cardIn 1.2s ease;
     }
 
     @keyframes cardIn {
@@ -71,7 +81,7 @@
       border-radius: 999px;
       background: linear-gradient(90deg, #d4af37, #ffdd77);
       color: #18263d;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
       letter-spacing: 1px;
       margin-bottom: 18px;
@@ -79,10 +89,10 @@
     }
 
     .emoji-train {
-      font-size: 46px;
+      font-size: clamp(38px, 8vw, 52px);
       animation: trainMove 2.4s ease-in-out infinite alternate;
       display: inline-block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     @keyframes trainMove {
@@ -92,21 +102,21 @@
 
     h1 {
       margin: 10px 0 12px;
-      font-size: clamp(32px, 6vw, 64px);
+      font-size: clamp(29px, 6vw, 62px);
       line-height: 1.1;
-      font-weight: 800;
+      font-weight: 900;
       text-shadow: 0 4px 18px rgba(0,0,0,0.35);
     }
 
     .name {
-      color: #ffd86b;
-      text-shadow: 0 0 15px rgba(255, 216, 107, 0.35);
+      color: var(--gold);
+      text-shadow: 0 0 15px rgba(255, 216, 107, 0.38);
     }
 
     .subtitle {
       margin: 0 auto 14px;
       max-width: 780px;
-      font-size: clamp(18px, 2.6vw, 28px);
+      font-size: clamp(17px, 2.7vw, 27px);
       line-height: 1.5;
       color: #eaf3ff;
     }
@@ -118,14 +128,14 @@
       border-radius: 18px;
       background: rgba(255, 215, 0, 0.14);
       border: 1px solid rgba(255, 215, 0, 0.3);
-      font-size: clamp(24px, 4vw, 40px);
-      font-weight: 800;
+      font-size: clamp(23px, 4vw, 39px);
+      font-weight: 900;
       color: #ffe082;
       box-shadow: 0 10px 30px rgba(255, 215, 0, 0.12);
     }
 
     .rail-line {
-      width: 220px;
+      width: min(230px, 70vw);
       height: 8px;
       margin: 24px auto 30px;
       border-radius: 10px;
@@ -151,20 +161,28 @@
       top: 16px;
     }
 
+    .gift-btn,
+    .mic-btn,
+    .close-btn,
+    .manual-btn {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: 0.25s ease;
+    }
+
     .gift-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       padding: 18px 34px;
-      border: none;
       border-radius: 18px;
-      font-size: 22px;
-      font-weight: 700;
-      cursor: pointer;
+      font-size: clamp(19px, 4vw, 23px);
+      font-weight: 800;
       color: #102038;
       background: linear-gradient(135deg, #ffd54f, #ffb300);
-      box-shadow: 0 16px 30px rgba(255, 179, 0, 0.35);
-      transition: 0.25s ease;
+      box-shadow: 0 16px 30px rgba(255, 179, 0, 0.36);
     }
 
     .gift-btn:hover {
@@ -176,15 +194,11 @@
       transform: scale(0.98);
     }
 
-    .gift-text {
-      font-size: 20px;
-    }
-
     .message-box {
       margin-top: 26px;
       min-height: 72px;
-      font-size: clamp(18px, 2.3vw, 28px);
-      font-weight: 700;
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 800;
       color: #ffffff;
       text-shadow: 0 3px 10px rgba(0,0,0,0.35);
     }
@@ -195,10 +209,265 @@
 
     @keyframes flashText {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.08); }
+      50% { opacity: 0.6; transform: scale(1.05); }
     }
 
-    .confetti, .spark {
+    .bottom-note {
+      margin-top: 30px;
+      font-size: 15px;
+      color: #d8e7ff;
+      opacity: 0.88;
+    }
+
+    .candle-screen,
+    .wow-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(255, 215, 0, 0.18), rgba(5, 10, 30, 0.92)),
+        rgba(0,0,0,0.76);
+    }
+
+    .candle-card,
+    .wow-content {
+      width: min(860px, 96vw);
+      max-height: 96vh;
+      overflow-y: auto;
+      padding: clamp(22px, 5vw, 42px) clamp(15px, 4vw, 28px);
+      border-radius: 30px;
+      background: rgba(7, 21, 43, 0.70);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.50);
+      animation: zoomIn 0.65s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.75);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .candle-title {
+      margin: 0 0 8px;
+      font-size: clamp(33px, 8vw, 78px);
+      font-weight: 1000;
+      color: #ffd54f;
+      text-shadow: 0 0 26px rgba(255, 213, 79, 0.48);
+      line-height: 1.08;
+    }
+
+    .candle-subtitle {
+      margin: 0 auto 18px;
+      max-width: 730px;
+      font-size: clamp(17px, 3vw, 27px);
+      line-height: 1.45;
+      color: #eef6ff;
+    }
+
+    .cake-wrap {
+      position: relative;
+      width: min(330px, 82vw);
+      height: 330px;
+      margin: 6px auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cake {
+      position: absolute;
+      bottom: 20px;
+      width: min(270px, 72vw);
+      height: 118px;
+      border-radius: 28px 28px 22px 22px;
+      background:
+        linear-gradient(#fff0c4 0 22px, transparent 22px),
+        linear-gradient(135deg, #ff7eb3, #ff4081);
+      box-shadow: inset 0 -12px 0 rgba(0,0,0,0.09), 0 18px 30px rgba(0,0,0,0.26);
+    }
+
+    .cake::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: -22px;
+      height: 38px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #fff6da, #ffdca3);
+      box-shadow: 0 6px 0 rgba(255,255,255,0.25);
+    }
+
+    .cake::after {
+      content: "33";
+      position: absolute;
+      left: 50%;
+      top: 44px;
+      transform: translateX(-50%);
+      font-size: 45px;
+      font-weight: 1000;
+      color: white;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.36);
+    }
+
+    .candle {
+      position: absolute;
+      bottom: 132px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 34px;
+      height: 120px;
+      border-radius: 12px;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          #ffffff 0 12px,
+          #ff4757 12px 22px
+        );
+      box-shadow: inset -7px 0 0 rgba(0,0,0,0.10);
+    }
+
+    .wick {
+      position: absolute;
+      left: 50%;
+      top: -13px;
+      width: 5px;
+      height: 18px;
+      transform: translateX(-50%);
+      border-radius: 5px;
+      background: #222;
+      z-index: 4;
+    }
+
+    .flame {
+      position: absolute;
+      left: 50%;
+      top: -76px;
+      width: 56px;
+      height: 76px;
+      transform: translateX(-50%) scale(1);
+      transform-origin: 50% 100%;
+      border-radius: 55% 55% 55% 55% / 65% 65% 35% 35%;
+      background:
+        radial-gradient(circle at 50% 65%, #ffffff 0 12%, #ffe082 13% 28%, transparent 30%),
+        radial-gradient(circle at 50% 55%, #fff176 0 25%, #ff9800 45%, #ff3d00 72%, transparent 75%);
+      filter: drop-shadow(0 0 18px rgba(255, 189, 46, 0.95));
+      animation: flameMove 0.16s infinite alternate ease-in-out;
+      z-index: 5;
+    }
+
+    @keyframes flameMove {
+      from {
+        transform: translateX(-50%) rotate(-4deg) scale(0.96, 1.03);
+      }
+      to {
+        transform: translateX(-50%) rotate(5deg) scale(1.04, 0.96);
+      }
+    }
+
+    .smoke {
+      position: absolute;
+      left: 50%;
+      top: -92px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(230,230,230,0.72);
+      opacity: 0;
+      transform: translateX(-50%);
+      filter: blur(1px);
+      z-index: 7;
+    }
+
+    .smoke.show {
+      animation: smokeRise 2.1s ease-out forwards;
+    }
+
+    @keyframes smokeRise {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(28px) scale(0.5);
+      }
+      15% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-100px) scale(3.2);
+      }
+    }
+
+    .mic-panel {
+      margin: 6px auto 0;
+      max-width: 650px;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .mic-text {
+      margin: 0 0 11px;
+      font-size: clamp(16px, 3vw, 22px);
+      font-weight: 800;
+      color: #fff8d7;
+    }
+
+    .level-wrap {
+      width: 100%;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .level-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #69f0ae, #ffd54f, #ff5252);
+      transition: width 0.08s linear;
+    }
+
+    .progress-label {
+      margin: 10px 0 0;
+      font-size: 15px;
+      color: #dceaff;
+    }
+
+    .manual-btn {
+      margin-top: 13px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.95);
+      color: #102038;
+      font-size: 16px;
+      font-weight: 800;
+      display: none;
+    }
+
+    .mic-error {
+      margin-top: 12px;
+      color: #ffdddd;
+      font-size: 15px;
+      line-height: 1.45;
+      display: none;
+    }
+
+    .confetti,
+    .spark {
       position: fixed;
       top: -20px;
       z-index: 9999;
@@ -234,46 +503,16 @@
       }
     }
 
-    .wow-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 9998;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at center, rgba(255, 215, 0, 0.18), rgba(5, 10, 30, 0.9)),
-        rgba(0,0,0,0.7);
-      text-align: center;
-      padding: 20px;
-    }
-
-    .wow-content {
-      max-width: 900px;
-      animation: zoomIn 0.7s ease;
-    }
-
-    @keyframes zoomIn {
-      from {
-        opacity: 0;
-        transform: scale(0.75);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
     .wow-title {
       font-size: clamp(36px, 8vw, 88px);
       margin: 0 0 16px;
-      font-weight: 900;
+      font-weight: 1000;
       color: #ffd54f;
       text-shadow: 0 0 25px rgba(255, 213, 79, 0.45);
     }
 
     .wow-subtitle {
-      font-size: clamp(20px, 3vw, 36px);
+      font-size: clamp(18px, 3vw, 33px);
       line-height: 1.5;
       margin: 0 auto;
       max-width: 800px;
@@ -282,35 +521,47 @@
     .close-btn {
       margin-top: 28px;
       padding: 14px 26px;
-      border: none;
       border-radius: 14px;
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
       background: white;
       color: #102038;
-      cursor: pointer;
-    }
-
-    .bottom-note {
-      margin-top: 30px;
-      font-size: 15px;
-      color: #d8e7ff;
-      opacity: 0.88;
     }
 
     @media (max-width: 600px) {
+      body {
+        overflow: hidden;
+      }
+
+      .main {
+        padding: 12px;
+      }
+
       .card {
-        padding: 30px 18px;
+        width: 100%;
+        border-radius: 22px;
       }
 
       .gift-btn {
         width: 100%;
-        justify-content: center;
-        font-size: 20px;
+        padding: 17px 20px;
+      }
+
+      .cake-wrap {
+        height: 292px;
+      }
+
+      .candle {
+        bottom: 122px;
+      }
+
+      .cake {
+        bottom: 12px;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="overlay-lights"></div>
 
@@ -321,7 +572,7 @@
 
       <h1>
         Tug‘ilgan kuningiz bilan<br>
-        <span class="name">Nodirbek!</span>
+        <span class="name" id="mainName">MUHAMMADJONOV ADHAMJON!</span>
       </h1>
 
       <div class="subtitle">
@@ -333,9 +584,9 @@
 
       <div class="rail-line"></div>
 
-      <button class="gift-btn" onclick="showSurprise()">
+      <button class="gift-btn" onclick="openCandleScreen()">
         <span>🎁</span>
-        <span class="gift-text">Sovg‘ani ochish</span>
+        <span>Sovg‘ani olish</span>
       </button>
 
       <div class="message-box" id="messageBox"></div>
@@ -346,23 +597,69 @@
     </div>
   </div>
 
+  <div class="candle-screen" id="candleScreen">
+    <div class="candle-card">
+      <h2 class="candle-title">33 yoshingiz muborak! 🎂</h2>
+
+      <p class="candle-subtitle">
+        Sovg‘ani ochish uchun shamni puflab o‘chiring.
+        Telefon mikrofoniga yaqinroq puflasangiz, sham real holatda sekin yoki tez o‘chadi.
+      </p>
+
+      <div class="cake-wrap">
+        <div class="candle">
+          <div class="wick"></div>
+          <div class="flame" id="flame"></div>
+          <div class="smoke" id="smoke"></div>
+        </div>
+        <div class="cake"></div>
+      </div>
+
+      <div class="mic-panel">
+        <p class="mic-text" id="micText">🎤 Mikrofon ruxsati so‘ralmoqda...</p>
+
+        <div class="level-wrap">
+          <div class="level-bar" id="levelBar"></div>
+        </div>
+
+        <p class="progress-label" id="progressLabel">
+          Sham holati: 100%
+        </p>
+
+        <button class="manual-btn" id="manualBtn" onclick="manualExtinguish()">
+          Mikrofon ishlamasa, shamni qo‘lda o‘chirish
+        </button>
+
+        <div class="mic-error" id="micError">
+          Mikrofon ruxsati berilmadi yoki brauzer mikrofonni qo‘llab-quvvatlamadi.
+          GitHub Pages yoki HTTPS orqali ochib ko‘ring.
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="wow-screen" id="wowScreen">
     <div class="wow-content">
-      <h2 class="wow-title">🎆 SURPRIZE! 🎆</h2>
+      <h2 class="wow-title">🎆 Tabriklaymiz! 🎆</h2>
+
       <p class="wow-subtitle">
-        Hurmatli <b>Nodirbek</b>, tavallud ayyomingiz bilan samimiy tabriklaymiz!<br><br>
-        Temir yo‘ldek mustahkam iroda, yuqori mas’uliyat, sharafli mehnat va
-        hayotingiz yo‘lida doimo omad hamroh bo‘lsin.<br><br>
+        Hurmatli <b id="wowName">Muhammadjonov Adhamjon</b>, tavallud ayyomingiz bilan samimiy tabriklaymiz!<br><br>
+        Sizga sihat-salomatlik, oilaviy baxt, ishlaringizda ulkan muvaffaqiyat,
+        jamoa orasida hurmat-e’tibor va hayotingiz yo‘lida doimo omad hamroh bo‘lishini tilaymiz.<br><br>
         <b>33 yosh muborak bo‘lsin!</b> 🚂🎂
       </p>
+
       <button class="close-btn" onclick="closeSurprise()">Yopish</button>
     </div>
   </div>
 
   <script>
+    const PERSON_NAME = "MUHAMMADJONOV ADHAMJON";
+    const AGE = 33;
+
     const messages = [
       "🚆 Bugun jamoamiz uchun alohida bayram!",
-      "🎉 Nodirbek, sizga baxt va omad tilaymiz!",
+      "🎉 Sizga baxt, sog‘lik va omad tilaymiz!",
       "🛤 Temir yo‘ldek yo‘lingiz doimo ravon bo‘lsin!",
       "🏆 Mehnatingiz qadrlanaversin va yutuqlaringiz ko‘paysin!",
       "🎂 33 yosh — yangi zafarlar davri bo‘lsin!"
@@ -380,24 +677,243 @@
     }
 
     rotateMessages();
-    setInterval(rotateMessages, 2200);
+    setInterval(rotateMessages, 2300);
+
+    const candleScreen = document.getElementById("candleScreen");
+    const wowScreen = document.getElementById("wowScreen");
+    const flame = document.getElementById("flame");
+    const smoke = document.getElementById("smoke");
+    const levelBar = document.getElementById("levelBar");
+    const progressLabel = document.getElementById("progressLabel");
+    const micText = document.getElementById("micText");
+    const micError = document.getElementById("micError");
+    const manualBtn = document.getElementById("manualBtn");
+
+    let audioContext;
+    let analyser;
+    let microphone;
+    let dataArray;
+    let animationId;
+
+    let candleLife = 1;
+    let extinguished = false;
+    let noiseFloor = 0.018;
+    let lastTime = 0;
+
+    document.getElementById("mainName").textContent = PERSON_NAME + "!";
+    document.getElementById("wowName").textContent = PERSON_NAME;
+    document.querySelector(".candle-title").textContent = AGE + " yoshingiz muborak! 🎂";
+
+    function openCandleScreen() {
+      candleScreen.style.display = "flex";
+      resetCandle();
+      startMicrophone();
+    }
+
+    function resetCandle() {
+      candleLife = 1;
+      extinguished = false;
+      lastTime = performance.now();
+
+      flame.style.display = "block";
+      flame.style.opacity = "1";
+      flame.style.transform = "translateX(-50%) scale(1)";
+      flame.style.filter = "drop-shadow(0 0 18px rgba(255, 189, 46, 0.95))";
+
+      smoke.classList.remove("show");
+      levelBar.style.width = "0%";
+      progressLabel.textContent = "Sham holati: 100%";
+      micText.textContent = "🎤 Mikrofon ruxsati so‘ralmoqda...";
+      micError.style.display = "none";
+      manualBtn.style.display = "none";
+    }
+
+    async function startMicrophone() {
+      stopMicrophone();
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: false,
+            noiseSuppression: false,
+            autoGainControl: false
+          }
+        });
+
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048;
+        analyser.smoothingTimeConstant = 0.55;
+
+        microphone = audioContext.createMediaStreamSource(stream);
+        microphone.connect(analyser);
+
+        dataArray = new Float32Array(analyser.fftSize);
+
+        micText.textContent = "🎂 Shamni o‘chirish uchun telefon mikrofoniga puflang!";
+        manualBtn.style.display = "inline-block";
+
+        calibrateNoise();
+      } catch (error) {
+        micText.textContent = "⚠️ Mikrofon ishga tushmadi";
+        micError.style.display = "block";
+        manualBtn.style.display = "inline-block";
+      }
+    }
+
+    function calibrateNoise() {
+      let samples = [];
+      let start = performance.now();
+
+      function collect() {
+        if (!analyser || extinguished) return;
+
+        analyser.getFloatTimeDomainData(dataArray);
+        const rms = getRMS(dataArray);
+        samples.push(rms);
+
+        if (performance.now() - start < 900) {
+          requestAnimationFrame(collect);
+        } else {
+          samples.sort((a, b) => a - b);
+          const mid = samples[Math.floor(samples.length / 2)] || 0.018;
+          noiseFloor = Math.max(0.012, mid * 1.7);
+
+          micText.textContent = "🌬 Endi puflang — sekin puflasangiz sham sekin o‘chadi, qattiq puflasangiz tez o‘chadi!";
+          lastTime = performance.now();
+          listenBlow();
+        }
+      }
+
+      collect();
+    }
+
+    function listenBlow(time = performance.now()) {
+      if (!analyser || extinguished) return;
+
+      const dt = Math.min(0.05, Math.max(0.016, (time - lastTime) / 1000));
+      lastTime = time;
+
+      analyser.getFloatTimeDomainData(dataArray);
+
+      const rms = getRMS(dataArray);
+
+      let blowPower = (rms - noiseFloor) * 13;
+      blowPower = Math.max(0, Math.min(1, blowPower));
+
+      const levelPercent = Math.round(blowPower * 100);
+      levelBar.style.width = levelPercent + "%";
+
+      animateFlame(blowPower);
+
+      if (blowPower > 0.08) {
+        const burnDownSpeed = 0.18 + blowPower * 1.45;
+        candleLife -= burnDownSpeed * dt;
+        candleLife = Math.max(0, candleLife);
+
+        progressLabel.textContent = "Sham holati: " + Math.round(candleLife * 100) + "%";
+
+        if (candleLife <= 0) {
+          extinguishCandle();
+          return;
+        }
+      }
+
+      animationId = requestAnimationFrame(listenBlow);
+    }
+
+    function getRMS(buffer) {
+      let sum = 0;
+
+      for (let i = 0; i < buffer.length; i++) {
+        sum += buffer[i] * buffer[i];
+      }
+
+      return Math.sqrt(sum / buffer.length);
+    }
+
+    function animateFlame(blowPower) {
+      const lifeScale = Math.max(0.12, candleLife);
+      const windTilt = blowPower * 28;
+      const scaleX = Math.max(0.34, lifeScale - blowPower * 0.20);
+      const scaleY = Math.max(0.18, lifeScale - blowPower * 0.42);
+      const opacity = Math.max(0.12, candleLife - blowPower * 0.35);
+
+      flame.style.opacity = opacity.toFixed(2);
+      flame.style.transform =
+        "translateX(-50%) rotate(" + windTilt + "deg) scale(" + scaleX + "," + scaleY + ")";
+      flame.style.filter =
+        "drop-shadow(0 0 " + Math.round(6 + candleLife * 18) + "px rgba(255, 189, 46, " + opacity + "))";
+    }
+
+    function extinguishCandle() {
+      if (extinguished) return;
+
+      extinguished = true;
+      stopMicrophone();
+
+      levelBar.style.width = "100%";
+      progressLabel.textContent = "Sham o‘chdi! 🎉";
+      micText.textContent = "✅ Ajoyib! Sovg‘a ochilmoqda...";
+
+      flame.style.opacity = "0";
+      flame.style.transform = "translateX(-50%) scale(0.05)";
+      flame.style.display = "none";
+
+      smoke.classList.remove("show");
+      void smoke.offsetWidth;
+      smoke.classList.add("show");
+
+      setTimeout(() => {
+        candleScreen.style.display = "none";
+        showSurprise();
+      }, 1700);
+    }
+
+    function manualExtinguish() {
+      candleLife = 0;
+      extinguishCandle();
+    }
+
+    function stopMicrophone() {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+
+      if (microphone && microphone.mediaStream) {
+        microphone.mediaStream.getTracks().forEach(track => track.stop());
+      }
+
+      if (audioContext && audioContext.state !== "closed") {
+        audioContext.close();
+      }
+
+      audioContext = null;
+      analyser = null;
+      microphone = null;
+      dataArray = null;
+    }
 
     function makeConfetti(count = 140) {
       const colors = ["#ffd54f", "#ff5252", "#40c4ff", "#69f0ae", "#ffffff", "#ff80ab"];
+
       for (let i = 0; i < count; i++) {
         const el = document.createElement("div");
         el.className = "confetti";
         el.style.left = Math.random() * 100 + "vw";
         el.style.background = colors[Math.floor(Math.random() * colors.length)];
         el.style.animationDuration = (Math.random() * 2 + 2.5) + "s";
-        el.style.transform = `rotate(${Math.random() * 360}deg)`;
+        el.style.transform = "rotate(" + (Math.random() * 360) + "deg)";
         document.body.appendChild(el);
+
         setTimeout(() => el.remove(), 5200);
       }
     }
 
     function makeSparks(count = 90) {
       const colors = ["#ffd54f", "#fff176", "#40c4ff", "#ffffff"];
+
       for (let i = 0; i < count; i++) {
         const el = document.createElement("div");
         el.className = "spark";
@@ -406,18 +922,19 @@
         el.style.background = "currentColor";
         el.style.animationDuration = (Math.random() * 2 + 1.6) + "s";
         document.body.appendChild(el);
+
         setTimeout(() => el.remove(), 4200);
       }
     }
 
     function showSurprise() {
-      makeConfetti(180);
+      makeConfetti(190);
       makeSparks(120);
-      document.getElementById("wowScreen").style.display = "flex";
+      wowScreen.style.display = "flex";
     }
 
     function closeSurprise() {
-      document.getElementById("wowScreen").style.display = "none";
+      wowScreen.style.display = "none";
     }
 
     window.onload = () => {
@@ -425,6 +942,8 @@
         makeConfetti(60);
       }, 700);
     };
+
+    window.addEventListener("beforeunload", stopMicrophone);
   </script>
 </body>
 </html>
